@@ -4,7 +4,7 @@
     <app-search-pokemon></app-search-pokemon>
     <div class="row mt-4">
         <div class="flex-grow-1 row col">
-            <div class="col-md-4 col-xl-3" *ngFor="let pokemon of pokemonList">
+            <div class="col-md-4 col-xl-3" *ngFor="let pokemon of filteredPokemonList">
                 <div class="card mb-3" style="max-width: 540px;" pkmBorderCard="pink"
                     (click)="goToPokemon(pokemon)">
                     <div class="row g-0">

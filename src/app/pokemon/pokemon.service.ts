@@ -8,6 +8,8 @@ import {Observable, map, BehaviorSubject} from 'rxjs';
   providedIn: 'root'
 })
 export class PokemonService {
+  private pokemonList = new BehaviorSubject<Pokemon[]|null>(null);
+  pokemonList$ = this.pokemonList.asObservable();
   constructor(private http: HttpClient) { }
 
   getPokemonList(): Observable<Pokemon[]>{
@@ -66,10 +68,14 @@ export class PokemonService {
   searchPokemonList(term: string): Observable<Pokemon[]> {
     if (term.length) {
       return this.http.get<Pokemon[]>(`api/pokemons/?name=${term}`).pipe(
-          map(pokemons => pokemons)
+          map(pokemons => {
+            this.pokemonList.next(pokemons);
+            return pokemons;
+          })
       );
     }
 
+    this.pokemonList.next(null);
     return (new BehaviorSubject([])).asObservable();
   }
 }
