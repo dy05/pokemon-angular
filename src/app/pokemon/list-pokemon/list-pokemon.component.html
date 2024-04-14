@@ -1,0 +1,37 @@
+<div class="container">
+    <h1>Liste de pokémons</h1>
+
+    <app-search-pokemon></app-search-pokemon>
+    <div class="row mt-4">
+        <div class="flex-grow-1 row col">
+            <div class="col-md-4 col-xl-3" *ngFor="let pokemon of pokemonList">
+                <div class="card mb-3" style="max-width: 540px;" pkmBorderCard="pink"
+                    (click)="goToPokemon(pokemon)">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img [src]="pokemon.picture" class="img-fluid rounded-start" alt="...">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ pokemon.name | uppercase }}</h5>
+                                <p class="card-text"></p>
+                                <p class="card-text"><small class="text-body-secondary">{{ pokemon.created | date:'dd/MM/yyyy'  }}</small></p>
+                                <span *ngFor="let type of pokemon.types" class="{{ type | pokemonTypeColor }}">
+                                    {{ type }}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-1 flex-shrink-0 d-flex align-items-end pb-4">
+            <button type="button" class="shadow bg-danger border-0 rounded-circle d-flex justify-content-center align-items-center"
+                    style="width: 2.5rem; height: 2.5rem;" (click)="goToAddPokemon()">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 1.25rem; height: 1.25rem;">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                </svg>
+            </button>
+        </div>
+    </div>
+</div>

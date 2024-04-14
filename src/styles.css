@@ -1,0 +1,26 @@
+/* You can add global styles to this file, and also import other style files */
+.text-bg-vol {
+    color: #000 !important;
+    background-color: #6497b1 !important;
+}
+.text-bg-insecte {
+    color: #000 !important;
+    background-color: #aa6f73 !important;
+}
+.text-bg-poison {
+    color: #000 !important;
+    background-color: #b967ff !important;
+}
+.text-bg-fee {
+    color: #000 !important;
+    background-color: #05ffa1 !important;
+}
+.text-bg-psy {
+    color: #000 !important;
+    background-color: #ff71ce !important;
+}
+.text-bg-combat {
+    color: #000 !important;
+    background-color: #8d5524 !important
+}
+  

@@ -1,0 +1,50 @@
+<div *ngIf="pokemon">
+    <h1 class="text-center">{{ pokemon.name }}</h1>
+    <div  class="card mx-auto" style="max-width: 700px;">
+      <div class="row g-0">
+        <div class="col-md-4">
+          <img [src]="pokemon.picture" class="img-fluid rounded-start" alt="...">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <table class="table">
+              <tr class="table-active">
+                <th scope="row">Nom</th>
+                <td>{{ pokemon.name }}</td>
+              </tr>
+              <tr>
+                <th scope="row">Points de vie</th>
+                <td>{{ pokemon.hp }}</td>
+              </tr>
+              <tr class="table-secondary">
+                <th scope="row">Dégats</th>
+                <td>{{ pokemon.cp }}</td>
+              </tr>
+              <tr>
+                <th scope="row">Types</th>
+                <td>
+                  <span 
+                      *ngFor="let type of pokemon.types" 
+                      class="{{ type | pokemonTypeColor }}"> 
+                        {{ type }} 
+                    </span> 
+                </td>
+              </tr>
+              <tr class="table-secondary">
+                <th scope="row">Date de creation</th>
+                <td>{{ pokemon.created | date:'dd/MM/yyyy' }}</td>
+              </tr>
+            </table>
+          </div>
+          <div class="card-footer">
+            <a (click)="goToPokemonList()" class="card-link" style="cursor: pointer;">Retour</a>
+            <a (click)="goToPokemonEdit(pokemon)" class="card-link" style="cursor: pointer;">Modifier</a>
+            <a (click)="deletePokemon(pokemon)" class="card-link" style="cursor: pointer;">Supprimer</a>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+<div *ngIf="!pokemon">
+  <h4 class="text-center">Aucun pokemon à affiché</h4>
+</div>

@@ -1,0 +1,12 @@
+<div class="col-6 mx-auto">
+    <div class="card shadow py-5 px-4 rounded-0 border-0">
+        <input type="text" class="form-control shadow-none px-0 rounded-0 border-2 border-top-0 border-start-0 border-end-0 border-success w-full" #searchBox (keyup)="search(searchBox.value)" placeholder="Rechercher un pokémon..">
+        <div class="collection pt-4">
+            <ul class="list-group rounded-0">
+                <li class="list-group-item text-success" *ngFor="let pokemon of pokemons$ | async" (click)="goToDetail(pokemon)">
+                    {{ pokemon.name }}
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
